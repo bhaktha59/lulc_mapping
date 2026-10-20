@@ -10,6 +10,7 @@
     "backend": "python backend/app.py",
     "start": "cmd /c start_all.bat",
     "start:all": "cmd /c start_all.bat",
-    "install:all": "npm install --prefix frontend"
+    "install:all": "npm install --prefix frontend",
+    "deploy:cf": "cmd /c deploy_cloudflare.bat"
   }
 }

@@ -1,0 +1,168 @@
+:root {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Outfit', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Accent Colors (Consistent in both themes) */
+  --accent-emerald: #10b981;
+  --accent-emerald-dark: #059669;
+  --accent-emerald-glow: rgba(16, 185, 129, 0.25);
+  --accent-cyan: #06b6d4;
+  --accent-blue: #3b82f6;
+  --accent-amber: #f59e0b;
+  --accent-rose: #f43f5e;
+  --accent-purple: #8b5cf6;
+
+  --sidebar-width: 480px;
+  --header-height: 68px;
+
+  /* =========================================================
+     LIGHT THEME TOKENS (DEFAULT)
+     ========================================================= */
+  --bg-dark: #f8fafc;
+  --bg-header: #ffffff;
+  --bg-stepper: #f1f5f9;
+  --bg-panel: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f8fafc;
+  --bg-card-secondary: #f1f5f9;
+  --bg-subtle: rgba(0, 0, 0, 0.03);
+  --bg-modal: #ffffff;
+
+  --border-subtle: #e2e8f0;
+  --border-strong: #cbd5e1;
+  --border-highlight: rgba(16, 185, 129, 0.4);
+
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-dim: #64748b;
+
+  --input-bg: #ffffff;
+  --input-border: #cbd5e1;
+  --input-text: #0f172a;
+  --option-bg: #ffffff;
+  --option-text: #0f172a;
+
+  --table-header-bg: #f1f5f9;
+  --table-border: #e2e8f0;
+  --table-row-hover: #f8fafc;
+
+  --stat-bg: #ffffff;
+  --stat-border: #e2e8f0;
+
+  --dropzone-bg: #f8fafc;
+  --dropzone-border: #cbd5e1;
+  --dropzone-hover-bg: rgba(16, 185, 129, 0.05);
+  --dropzone-hover-border: #10b981;
+
+  --overlay-bg: rgba(255, 255, 255, 0.94);
+  --overlay-border: rgba(0, 0, 0, 0.1);
+
+  --shadow-card: 0 2px 8px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.03);
+  --shadow-header: 0 2px 10px rgba(15, 23, 42, 0.06);
+  --shadow-modal: 0 20px 45px rgba(15, 23, 42, 0.15);
+
+  --scrollbar-thumb: rgba(100, 116, 139, 0.3);
+  --scrollbar-thumb-hover: rgba(100, 116, 139, 0.5);
+  --scrollbar-track: rgba(0, 0, 0, 0.04);
+}
+
+/* =========================================================
+   DARK THEME TOKENS
+   ========================================================= */
+[data-theme="dark"] {
+  --bg-dark: #0a0e17;
+  --bg-header: rgba(15, 23, 42, 0.95);
+  --bg-stepper: rgba(12, 18, 32, 0.98);
+  --bg-panel: rgba(11, 17, 30, 0.95);
+  --bg-card: rgba(16, 23, 38, 0.75);
+  --bg-card-hover: rgba(22, 32, 53, 0.85);
+  --bg-card-secondary: rgba(255, 255, 255, 0.03);
+  --bg-subtle: rgba(255, 255, 255, 0.04);
+  --bg-modal: #0f172a;
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --border-highlight: rgba(16, 185, 129, 0.35);
+
+  --text-main: #f3f4f6;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+
+  --input-bg: rgba(255, 255, 255, 0.04);
+  --input-border: rgba(255, 255, 255, 0.12);
+  --input-text: #ffffff;
+  --option-bg: #0f172a;
+  --option-text: #f3f4f6;
+
+  --table-header-bg: rgba(255, 255, 255, 0.05);
+  --table-border: rgba(255, 255, 255, 0.06);
+  --table-row-hover: rgba(255, 255, 255, 0.02);
+
+  --stat-bg: rgba(255, 255, 255, 0.03);
+  --stat-border: rgba(255, 255, 255, 0.08);
+
+  --dropzone-bg: rgba(255, 255, 255, 0.02);
+  --dropzone-border: rgba(255, 255, 255, 0.15);
+  --dropzone-hover-bg: rgba(16, 185, 129, 0.04);
+  --dropzone-hover-border: var(--accent-emerald);
+
+  --overlay-bg: rgba(15, 23, 42, 0.92);
+  --overlay-border: rgba(255, 255, 255, 0.1);
+
+  --shadow-card: none;
+  --shadow-header: 0 4px 20px rgba(0, 0, 0, 0.3);
+  --shadow-modal: 0 20px 40px rgba(0, 0, 0, 0.6);
+
+  --scrollbar-thumb: rgba(255, 255, 255, 0.15);
+  --scrollbar-thumb-hover: rgba(255, 255, 255, 0.3);
+  --scrollbar-track: rgba(0, 0, 0, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.15s ease;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+input, select, textarea {
+  font-family: inherit;
+  outline: none;
+}

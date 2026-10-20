@@ -1,0 +1,386 @@
+{
+  "status": "success",
+  "year": 2025,
+  "algorithm": "SVM",
+  "algorithm_name": "Support Vector Machine (SVM)",
+  "sensor": "Landsat 8 OLI & Landsat 9 OLI-2",
+  "scenes_count": 31,
+  "temporal_window": [
+    "2025-01-01",
+    "2025-04-01"
+  ],
+  "tile_url": "https://earthengine.googleapis.com/v1/projects/favorable-bolt-489809-c7/maps/25428debb670461a1fe0ef82eb64cd0e-b39cc8cb1e89e73778c6791724106904/tiles/{z}/{x}/{y}",
+  "total_area_ha": 459710.19,
+  "total_area_sqkm": 4597.1,
+  "total_classified_pixels": 5107891,
+  "classes": {
+    "1": {
+      "id": 1,
+      "name": "Forest",
+      "color": "#006400",
+      "desc": "Reserve forests, hill canopy & dense woodland vegetation",
+      "min_samples": 30,
+      "confirmed_points": 67
+    },
+    "2": {
+      "id": 2,
+      "name": "River",
+      "color": "#0000FF",
+      "desc": "Lakes, reservoirs, irrigation tanks & perennial streams",
+      "min_samples": 20,
+      "confirmed_points": 132
+    },
+    "3": {
+      "id": 3,
+      "name": "Cropland",
+      "color": "#32CD32",
+      "desc": "Active agricultural plains, intensive crops, paddy & orchards",
+      "min_samples": 50,
+      "confirmed_points": 122
+    },
+    "4": {
+      "id": 4,
+      "name": "Fallowland",
+      "color": "#F4A460",
+      "desc": "Temporarily uncropped agricultural arable plots & seasonal fallows",
+      "min_samples": 30,
+      "confirmed_points": 122
+    },
+    "5": {
+      "id": 5,
+      "name": "Land with scrub",
+      "color": "#9ACD32",
+      "desc": "Foothill thorn scrub, open bushland & degraded vegetation",
+      "min_samples": 25,
+      "confirmed_points": 114
+    },
+    "6": {
+      "id": 6,
+      "name": "Land without scrub",
+      "color": "#D2B48C",
+      "desc": "Open vacant ground, uncultivated sheet soil & open barren plain",
+      "min_samples": 25,
+      "confirmed_points": 122
+    },
+    "7": {
+      "id": 7,
+      "name": "Built-up / settlements",
+      "color": "#FF0000",
+      "desc": "Towns, rural hamlets, residential buildings, roads & paved infrastructure",
+      "min_samples": 40,
+      "confirmed_points": 172
+    },
+    "8": {
+      "id": 8,
+      "name": "Barren land / Rocky",
+      "color": "#808080",
+      "desc": "Exposed sheet rock, hill outcrops, dry boulder terrain & quarries",
+      "min_samples": 20,
+      "confirmed_points": 51
+    },
+    "9": {
+      "id": 9,
+      "name": "Tanks",
+      "color": "#06b6d4",
+      "desc": "Study area specific land cover class",
+      "min_samples": 25,
+      "confirmed_points": 58
+    }
+  },
+  "palette": [
+    "#006400",
+    "#0000FF",
+    "#32CD32",
+    "#F4A460",
+    "#9ACD32",
+    "#D2B48C",
+    "#FF0000",
+    "#808080",
+    "#06b6d4"
+  ],
+  "accuracy": {
+    "overall_accuracy": 46.02,
+    "kappa_coefficient": 0.379,
+    "validation_sample_size": 289,
+    "training_sample_size": 671,
+    "per_class": {
+      "1": {
+        "class_id": 1,
+        "name": "Forest",
+        "color": "#006400",
+        "producers_accuracy": 0.0,
+        "users_accuracy": 0.0
+      },
+      "2": {
+        "class_id": 2,
+        "name": "River",
+        "color": "#0000FF",
+        "producers_accuracy": 50.0,
+        "users_accuracy": 0.0
+      },
+      "3": {
+        "class_id": 3,
+        "name": "Cropland",
+        "color": "#32CD32",
+        "producers_accuracy": 42.5,
+        "users_accuracy": 0.0
+      },
+      "4": {
+        "class_id": 4,
+        "name": "Fallowland",
+        "color": "#F4A460",
+        "producers_accuracy": 67.6,
+        "users_accuracy": 0.0
+      },
+      "5": {
+        "class_id": 5,
+        "name": "Land with scrub",
+        "color": "#9ACD32",
+        "producers_accuracy": 18.9,
+        "users_accuracy": 0.0
+      },
+      "6": {
+        "class_id": 6,
+        "name": "Land without scrub",
+        "color": "#D2B48C",
+        "producers_accuracy": 41.2,
+        "users_accuracy": 0.0
+      },
+      "7": {
+        "class_id": 7,
+        "name": "Built-up / settlements",
+        "color": "#FF0000",
+        "producers_accuracy": 21.6,
+        "users_accuracy": 0.0
+      },
+      "8": {
+        "class_id": 8,
+        "name": "Barren land / Rocky",
+        "color": "#808080",
+        "producers_accuracy": 80.8,
+        "users_accuracy": 0.0
+      },
+      "9": {
+        "class_id": 9,
+        "name": "Tanks",
+        "color": "#06b6d4",
+        "producers_accuracy": 60.0,
+        "users_accuracy": 0.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        10,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        10,
+        0
+      ],
+      [
+        0,
+        0,
+        17,
+        12,
+        0,
+        0,
+        0,
+        11,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        3,
+        25,
+        4,
+        0,
+        0,
+        3,
+        0,
+        2
+      ],
+      [
+        0,
+        0,
+        1,
+        16,
+        7,
+        7,
+        3,
+        3,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        10,
+        5,
+        14,
+        1,
+        4,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        16,
+        4,
+        5,
+        8,
+        2,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        5,
+        5,
+        0,
+        0,
+        0,
+        42,
+        0,
+        0
+      ],
+      [
+        0,
+        5,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        9,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        11,
+        0,
+        2,
+        1,
+        2,
+        0,
+        1
+      ]
+    ]
+  },
+  "area_statistics": [
+    {
+      "class_id": 1,
+      "name": "Forest",
+      "color": "#006400",
+      "description": "Reserve forests, hill canopy & dense woodland vegetation",
+      "pixel_count": 255670,
+      "area_ha": 23010.3,
+      "area_sqkm": 230.1,
+      "percentage": 5.01
+    },
+    {
+      "class_id": 2,
+      "name": "River",
+      "color": "#0000FF",
+      "description": "Lakes, reservoirs, irrigation tanks & perennial streams",
+      "pixel_count": 399818,
+      "area_ha": 35983.62,
+      "area_sqkm": 359.84,
+      "percentage": 7.83
+    },
+    {
+      "class_id": 3,
+      "name": "Cropland",
+      "color": "#32CD32",
+      "description": "Active agricultural plains, intensive crops, paddy & orchards",
+      "pixel_count": 2206879,
+      "area_ha": 198619.11,
+      "area_sqkm": 1986.19,
+      "percentage": 43.21
+    },
+    {
+      "class_id": 4,
+      "name": "Fallowland",
+      "color": "#F4A460",
+      "description": "Temporarily uncropped agricultural arable plots & seasonal fallows",
+      "pixel_count": 442825,
+      "area_ha": 39854.25,
+      "area_sqkm": 398.54,
+      "percentage": 8.67
+    },
+    {
+      "class_id": 5,
+      "name": "Land with scrub",
+      "color": "#9ACD32",
+      "description": "Foothill thorn scrub, open bushland & degraded vegetation",
+      "pixel_count": 455293,
+      "area_ha": 40976.37,
+      "area_sqkm": 409.76,
+      "percentage": 8.91
+    },
+    {
+      "class_id": 6,
+      "name": "Land without scrub",
+      "color": "#D2B48C",
+      "description": "Open vacant ground, uncultivated sheet soil & open barren plain",
+      "pixel_count": 282807,
+      "area_ha": 25452.63,
+      "area_sqkm": 254.53,
+      "percentage": 5.54
+    },
+    {
+      "class_id": 7,
+      "name": "Built-up / settlements",
+      "color": "#FF0000",
+      "description": "Towns, rural hamlets, residential buildings, roads & paved infrastructure",
+      "pixel_count": 669557,
+      "area_ha": 60260.13,
+      "area_sqkm": 602.6,
+      "percentage": 13.11
+    },
+    {
+      "class_id": 8,
+      "name": "Barren land / Rocky",
+      "color": "#808080",
+      "description": "Exposed sheet rock, hill outcrops, dry boulder terrain & quarries",
+      "pixel_count": 97344,
+      "area_ha": 8760.96,
+      "area_sqkm": 87.61,
+      "percentage": 1.91
+    },
+    {
+      "class_id": 9,
+      "name": "Tanks",
+      "color": "#06b6d4",
+      "description": "Study area specific land cover class",
+      "pixel_count": 297698,
+      "area_ha": 26792.82,
+      "area_sqkm": 267.93,
+      "percentage": 5.83
+    }
+  ]
+}

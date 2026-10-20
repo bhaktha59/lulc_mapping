@@ -1,0 +1,15 @@
+{
+  "name": "tn-lulc-mapping-workspace",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Tamil Nadu Land Use / Land Cover Mapping System - Multi-Area Classification Portal",
+  "scripts": {
+    "dev": "npm run dev --prefix frontend",
+    "build": "npm run build --prefix frontend",
+    "preview": "npm run preview --prefix frontend",
+    "backend": "python backend/app.py",
+    "start": "cmd /c start_all.bat",
+    "start:all": "cmd /c start_all.bat",
+    "install:all": "npm install --prefix frontend"
+  }
+}

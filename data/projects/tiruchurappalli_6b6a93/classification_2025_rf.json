@@ -1,0 +1,469 @@
+{
+  "status": "success",
+  "year": 2025,
+  "algorithm": "RF",
+  "algorithm_name": "Random Forest (RF)",
+  "sensor": "Sentinel-2A & Sentinel-2B MSI Harmonized",
+  "dataset": "sentinel_2",
+  "native_resolution": "10m",
+  "resolution_desc": "10 m (Optical & NIR) / 20 m (SWIR)",
+  "analysis_resolution": 30,
+  "scenes_count": 112,
+  "temporal_window": [
+    "2025-01-01",
+    "2025-04-01"
+  ],
+  "tile_url": "https://earthengine.googleapis.com/v1/projects/favorable-bolt-489809-c7/maps/d64d4d4caa42afd27a7fa813349fd498-84e5d58b1760ce7715e8ec36e5fa722c/tiles/{z}/{x}/{y}",
+  "total_area_ha": 459710.1,
+  "total_area_sqkm": 4597.1,
+  "total_classified_pixels": 5107890,
+  "classes": {
+    "1": {
+      "id": 1,
+      "name": "Forest",
+      "color": "#006400",
+      "desc": "Reserve forests, hill canopy & dense woodland vegetation",
+      "min_samples": 30,
+      "confirmed_points": 67
+    },
+    "2": {
+      "id": 2,
+      "name": "River",
+      "color": "#0000FF",
+      "desc": "Lakes, reservoirs, irrigation tanks & perennial streams",
+      "min_samples": 20,
+      "confirmed_points": 132
+    },
+    "3": {
+      "id": 3,
+      "name": "Cropland",
+      "color": "#32CD32",
+      "desc": "Active agricultural plains, intensive crops, paddy & orchards",
+      "min_samples": 50,
+      "confirmed_points": 122
+    },
+    "4": {
+      "id": 4,
+      "name": "Fallowland",
+      "color": "#F4A460",
+      "desc": "Temporarily uncropped agricultural arable plots & seasonal fallows",
+      "min_samples": 30,
+      "confirmed_points": 122
+    },
+    "5": {
+      "id": 5,
+      "name": "Land with scrub",
+      "color": "#9ACD32",
+      "desc": "Foothill thorn scrub, open bushland & degraded vegetation",
+      "min_samples": 25,
+      "confirmed_points": 114
+    },
+    "6": {
+      "id": 6,
+      "name": "Land without scrub",
+      "color": "#D2B48C",
+      "desc": "Open vacant ground, uncultivated sheet soil & open barren plain",
+      "min_samples": 25,
+      "confirmed_points": 122
+    },
+    "7": {
+      "id": 7,
+      "name": "Built-up / settlements",
+      "color": "#FF0000",
+      "desc": "Towns, rural hamlets, residential buildings, roads & paved infrastructure",
+      "min_samples": 40,
+      "confirmed_points": 172
+    },
+    "8": {
+      "id": 8,
+      "name": "Barren land / Rocky",
+      "color": "#808080",
+      "desc": "Exposed sheet rock, hill outcrops, dry boulder terrain & quarries",
+      "min_samples": 20,
+      "confirmed_points": 51
+    },
+    "9": {
+      "id": 9,
+      "name": "Tanks",
+      "color": "#06b6d4",
+      "desc": "Study area specific land cover class",
+      "min_samples": 25,
+      "confirmed_points": 58
+    }
+  },
+  "palette": [
+    "#006400",
+    "#0000FF",
+    "#32CD32",
+    "#F4A460",
+    "#9ACD32",
+    "#D2B48C",
+    "#FF0000",
+    "#808080",
+    "#06b6d4"
+  ],
+  "accuracy": {
+    "overall_accuracy": 68.86,
+    "kappa_coefficient": 0.6437,
+    "validation_sample_size": 289,
+    "training_sample_size": 671,
+    "per_class": {
+      "1": {
+        "class_id": 1,
+        "name": "Forest",
+        "color": "#006400",
+        "producers_accuracy": 100.0,
+        "users_accuracy": 90.9
+      },
+      "2": {
+        "class_id": 2,
+        "name": "River",
+        "color": "#0000FF",
+        "producers_accuracy": 97.5,
+        "users_accuracy": 81.2
+      },
+      "3": {
+        "class_id": 3,
+        "name": "Cropland",
+        "color": "#32CD32",
+        "producers_accuracy": 59.5,
+        "users_accuracy": 42.3
+      },
+      "4": {
+        "class_id": 4,
+        "name": "Fallowland",
+        "color": "#F4A460",
+        "producers_accuracy": 40.5,
+        "users_accuracy": 41.7
+      },
+      "5": {
+        "class_id": 5,
+        "name": "Land with scrub",
+        "color": "#9ACD32",
+        "producers_accuracy": 61.8,
+        "users_accuracy": 61.8
+      },
+      "6": {
+        "class_id": 6,
+        "name": "Land without scrub",
+        "color": "#D2B48C",
+        "producers_accuracy": 35.1,
+        "users_accuracy": 59.1
+      },
+      "7": {
+        "class_id": 7,
+        "name": "Built-up / settlements",
+        "color": "#FF0000",
+        "producers_accuracy": 82.7,
+        "users_accuracy": 89.6
+      },
+      "8": {
+        "class_id": 8,
+        "name": "Barren land / Rocky",
+        "color": "#808080",
+        "producers_accuracy": 80.0,
+        "users_accuracy": 100.0
+      },
+      "9": {
+        "class_id": 9,
+        "name": "Tanks",
+        "color": "#06b6d4",
+        "producers_accuracy": 82.4,
+        "users_accuracy": 93.3
+      }
+    },
+    "confusion_matrix": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        20,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        39,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        22,
+        9,
+        2,
+        2,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        16,
+        15,
+        2,
+        3,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        5,
+        6,
+        21,
+        2,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        1,
+        5,
+        6,
+        8,
+        13,
+        2,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        4,
+        3,
+        0,
+        1,
+        1,
+        43,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        12,
+        0
+      ],
+      [
+        0,
+        0,
+        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        14
+      ]
+    ]
+  },
+  "feature_importance": {
+    "algorithm": "Random Forest (smileRandomForest)",
+    "metric": "Gini Impurity Decrease",
+    "metric_description": "Total sum of node impurity decreases (Gini index reduction) accumulated across all 100 decision trees in the ensemble.",
+    "notice": "Predictor scores indicate relative predictive utility during recursive partitioning across the digitized training samples; they do not represent physical or causal influence.",
+    "total_score": 1713.36,
+    "ranked_features": [
+      {
+        "feature": "elevation",
+        "score": 195.55,
+        "relative_importance_pct": 11.41
+      },
+      {
+        "feature": "mndwi",
+        "score": 131.28,
+        "relative_importance_pct": 7.66
+      },
+      {
+        "feature": "green",
+        "score": 126.21,
+        "relative_importance_pct": 7.37
+      },
+      {
+        "feature": "blue",
+        "score": 123.0,
+        "relative_importance_pct": 7.18
+      },
+      {
+        "feature": "bsi",
+        "score": 121.91,
+        "relative_importance_pct": 7.12
+      },
+      {
+        "feature": "swir1",
+        "score": 117.69,
+        "relative_importance_pct": 6.87
+      },
+      {
+        "feature": "slope",
+        "score": 117.31,
+        "relative_importance_pct": 6.85
+      },
+      {
+        "feature": "savi",
+        "score": 113.4,
+        "relative_importance_pct": 6.62
+      },
+      {
+        "feature": "nir",
+        "score": 112.95,
+        "relative_importance_pct": 6.59
+      },
+      {
+        "feature": "ndvi",
+        "score": 112.66,
+        "relative_importance_pct": 6.58
+      },
+      {
+        "feature": "ui",
+        "score": 112.43,
+        "relative_importance_pct": 6.56
+      },
+      {
+        "feature": "red",
+        "score": 112.11,
+        "relative_importance_pct": 6.54
+      },
+      {
+        "feature": "swir2",
+        "score": 109.5,
+        "relative_importance_pct": 6.39
+      },
+      {
+        "feature": "ndbi",
+        "score": 107.35,
+        "relative_importance_pct": 6.27
+      }
+    ]
+  },
+  "area_statistics": [
+    {
+      "class_id": 1,
+      "name": "Forest",
+      "color": "#006400",
+      "description": "Reserve forests, hill canopy & dense woodland vegetation",
+      "pixel_count": 288903,
+      "area_ha": 26001.27,
+      "area_sqkm": 260.01,
+      "percentage": 5.66
+    },
+    {
+      "class_id": 2,
+      "name": "River",
+      "color": "#0000FF",
+      "description": "Lakes, reservoirs, irrigation tanks & perennial streams",
+      "pixel_count": 169747,
+      "area_ha": 15277.23,
+      "area_sqkm": 152.77,
+      "percentage": 3.32
+    },
+    {
+      "class_id": 3,
+      "name": "Cropland",
+      "color": "#32CD32",
+      "description": "Active agricultural plains, intensive crops, paddy & orchards",
+      "pixel_count": 1894894,
+      "area_ha": 170540.46,
+      "area_sqkm": 1705.4,
+      "percentage": 37.1
+    },
+    {
+      "class_id": 4,
+      "name": "Fallowland",
+      "color": "#F4A460",
+      "description": "Temporarily uncropped agricultural arable plots & seasonal fallows",
+      "pixel_count": 1018557,
+      "area_ha": 91670.13,
+      "area_sqkm": 916.7,
+      "percentage": 19.94
+    },
+    {
+      "class_id": 5,
+      "name": "Land with scrub",
+      "color": "#9ACD32",
+      "description": "Foothill thorn scrub, open bushland & degraded vegetation",
+      "pixel_count": 846724,
+      "area_ha": 76205.16,
+      "area_sqkm": 762.05,
+      "percentage": 16.58
+    },
+    {
+      "class_id": 6,
+      "name": "Land without scrub",
+      "color": "#D2B48C",
+      "description": "Open vacant ground, uncultivated sheet soil & open barren plain",
+      "pixel_count": 544596,
+      "area_ha": 49013.64,
+      "area_sqkm": 490.14,
+      "percentage": 10.66
+    },
+    {
+      "class_id": 7,
+      "name": "Built-up / settlements",
+      "color": "#FF0000",
+      "description": "Towns, rural hamlets, residential buildings, roads & paved infrastructure",
+      "pixel_count": 214473,
+      "area_ha": 19302.57,
+      "area_sqkm": 193.03,
+      "percentage": 4.2
+    },
+    {
+      "class_id": 8,
+      "name": "Barren land / Rocky",
+      "color": "#808080",
+      "description": "Exposed sheet rock, hill outcrops, dry boulder terrain & quarries",
+      "pixel_count": 76350,
+      "area_ha": 6871.5,
+      "area_sqkm": 68.72,
+      "percentage": 1.49
+    },
+    {
+      "class_id": 9,
+      "name": "Tanks",
+      "color": "#06b6d4",
+      "description": "Study area specific land cover class",
+      "pixel_count": 53646,
+      "area_ha": 4828.14,
+      "area_sqkm": 48.28,
+      "percentage": 1.05
+    }
+  ]
+}

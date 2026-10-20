@@ -1,0 +1,71 @@
+{
+  "id": "lulc_kolli_hills_8cf035",
+  "name": "LULC Kolli Hills",
+  "district": "Namakkal",
+  "description": "Agriculture",
+  "target_year": 2025,
+  "satellite_dataset": "sentinel_2",
+  "created_at": "2026-10-18T00:24:53.354396",
+  "current_step": 1,
+  "has_boundary": false,
+  "has_samples": false,
+  "has_classification": false,
+  "classes": {
+    "1": {
+      "id": 1,
+      "name": "Forest",
+      "color": "#006400",
+      "desc": "Reserve forests, hill canopy & dense woodland vegetation",
+      "min_samples": 30
+    },
+    "2": {
+      "id": 2,
+      "name": "Waterbodies",
+      "color": "#0000FF",
+      "desc": "Lakes, reservoirs, irrigation tanks & perennial streams",
+      "min_samples": 20
+    },
+    "3": {
+      "id": 3,
+      "name": "Cropland",
+      "color": "#32CD32",
+      "desc": "Active agricultural plains, intensive crops, paddy & orchards",
+      "min_samples": 50
+    },
+    "4": {
+      "id": 4,
+      "name": "Fallowland",
+      "color": "#F4A460",
+      "desc": "Temporarily uncropped agricultural arable plots & seasonal fallows",
+      "min_samples": 30
+    },
+    "5": {
+      "id": 5,
+      "name": "Land with scrub",
+      "color": "#9ACD32",
+      "desc": "Foothill thorn scrub, open bushland & degraded vegetation",
+      "min_samples": 25
+    },
+    "6": {
+      "id": 6,
+      "name": "Land without scrub",
+      "color": "#D2B48C",
+      "desc": "Open vacant ground, uncultivated sheet soil & open barren plain",
+      "min_samples": 25
+    },
+    "7": {
+      "id": 7,
+      "name": "Built-up / settlements",
+      "color": "#FF0000",
+      "desc": "Towns, rural hamlets, residential buildings, roads & paved infrastructure",
+      "min_samples": 40
+    },
+    "8": {
+      "id": 8,
+      "name": "Barren land / Rocky",
+      "color": "#808080",
+      "desc": "Exposed sheet rock, hill outcrops, dry boulder terrain & quarries",
+      "min_samples": 20
+    }
+  }
+}

@@ -11,6 +11,7 @@
     "start": "cmd /c start_all.bat",
     "start:all": "cmd /c start_all.bat",
     "install:all": "npm install --prefix frontend",
-    "deploy:cf": "cmd /c deploy_cloudflare.bat"
+    "deploy:cf": "cmd /c deploy_cloudflare.bat",
+    "tunnel": "cmd /c start_tunnel.bat"
   }
 }

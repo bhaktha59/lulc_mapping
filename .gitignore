@@ -46,6 +46,8 @@ data/projects/*/exports/*.tif
 # Cloudflare Wrangler & Serverless
 .wrangler/
 .mf/
+cloudflared.exe
+*.exe
 
 # Environment Variables & Secrets
 .env

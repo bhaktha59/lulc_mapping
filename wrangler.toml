@@ -6,3 +6,6 @@ compatibility_date = "2024-09-23"
 directory = "frontend/dist"
 binding = "ASSETS"
 not_found_handling = "single-page-application"
+
+[vars]
+BACKEND_API_URL = "https://lulc-mapping-api.onrender.com"

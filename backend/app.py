@@ -39,6 +39,8 @@ from config import (
 from services.shapefile_service import process_shapefile_zip
 from services.gee_pipeline import (
     initialize_gee,
+    is_gee_ready,
+    get_gee_status,
     get_satellite_composite_for_geometry,
     get_landsat_composite_for_geometry,
     check_satellite_availability,
@@ -127,10 +129,18 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-# Enable CORS for local Vite dev server and any web origin
+# Enable CORS for local Vite dev server, Cloudflare Workers/Pages, and all web origins
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "https://lulc.bakthageo59.workers.dev",
+        "https://lulc-mapping.pages.dev",
+        "http://localhost:5173",
+        "http://localhost:5174",
+        "http://127.0.0.1:5173",
+        "http://127.0.0.1:5174",
+    ],
+    allow_origin_regex=r"https?://.*",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -183,8 +193,15 @@ class UpdateClassesRequest(BaseModel):
 
 @app.get("/api/health")
 def health_check():
-    """Health check endpoint to verify backend server connectivity."""
-    return {"status": "ok", "message": "LULC Mapping Backend is running on port 8001."}
+    """Health check endpoint to verify backend server connectivity and GEE status."""
+    gee_stat = get_gee_status()
+    return {
+        "status": "ok",
+        "service": "LULC Mapping Enterprise API",
+        "gee": gee_stat,
+        "supported_years": SUPPORTED_YEARS,
+        "message": "LULC Mapping Backend is online and operational."
+    }
 
 
 @app.get("/api/classes")
@@ -1176,5 +1193,7 @@ def export_complete_package_bundle(
 
 if __name__ == "__main__":
     import uvicorn
-    print("Starting LULC Mapping Backend Server on http://localhost:8001 ...")
-    uvicorn.run("app:app", host="127.0.0.1", port=8001, reload=True)
+    port = int(os.environ.get("PORT", 8001))
+    host = os.environ.get("HOST", "0.0.0.0" if os.environ.get("PORT") else "127.0.0.1")
+    print(f"Starting LULC Mapping Backend Server on http://{host}:{port} ...")
+    uvicorn.run("app:app", host=host, port=port, reload=True if port == 8001 else False)

@@ -1007,20 +1007,20 @@ export default function App() {
           <div
             className={`api-status-container ${backendStatus}`}
             onClick={async () => {
-              setStatusMessage('Checking backend server connection (Port 8001)...');
+              setStatusMessage('Checking backend server connection...');
               const ok = await checkBackendHealth();
               if (ok) {
                 await loadProjectsList();
-                setStatusMessage('Connected to FastAPI backend on port 8001!');
+                setStatusMessage('Connected to LULC FastAPI backend!');
               } else {
-                setStatusMessage('Backend offline: Port 8001 not responding. Please run "npm run backend".');
+                setStatusMessage(`Backend offline: Cannot reach ${API_BASE}. Click to retry.`);
               }
             }}
             title={
               backendStatus === 'online'
-                ? 'API Online: FastAPI Backend connected on port 8001 (Click to re-verify)'
+                ? `API Online: FastAPI Backend connected (${API_BASE})`
                 : backendStatus === 'offline'
-                ? 'API Offline: Cannot reach backend on port 8001 (Click to retry connection)'
+                ? `API Offline: Cannot reach ${API_BASE} (Click to retry connection)`
                 : 'API Status: Connecting to backend...'
             }
             role="button"
@@ -1111,9 +1111,9 @@ export default function App() {
           <div className="banner-left">
             <span className="banner-icon">⚠️</span>
             <div>
-              <div className="banner-title">FastAPI Backend Server is Offline (Port 8001)</div>
+              <div className="banner-title">LULC Backend API Server is Offline</div>
               <div className="banner-desc">
-                Cannot reach <code>{API_BASE}</code>. Open a terminal in <code>c:\LULC_Mapping</code> and run <code>npm run backend</code> (or <code>python backend/app.py</code>) to enable project creation, GEE satellite compositing, and machine learning.
+                Cannot reach <code>{API_BASE}</code>. {API_BASE.includes('localhost') || API_BASE.includes('127.0.0.1') ? 'Open a terminal in c:\\LULC_Mapping and run python backend/app.py to start the local service.' : 'The hosted cloud API server may be waking up or temporarily unreachable. Please click Retry Connection.'}
               </div>
             </div>
           </div>
@@ -2414,7 +2414,7 @@ export default function App() {
                 <div style={{ flex: 1 }}>
                   <strong>Backend Server Offline</strong>
                   <div style={{ fontSize: 12, marginTop: 2 }}>
-                    The backend API on port 8001 is not running. Open a terminal and run <code>npm run backend</code> (or <code>python backend/app.py</code>) to start the service.
+                    Cannot reach <code>{API_BASE}</code>. {API_BASE.includes('localhost') || API_BASE.includes('127.0.0.1') ? 'Start the backend using python backend/app.py.' : 'Please verify cloud backend status or retry.'}
                   </div>
                 </div>
                 <button

@@ -17,10 +17,10 @@ if %errorlevel% neq 0 (
 echo [OK] Build completed successfully.
 echo.
 
-echo [2/2] Publishing to Cloudflare Pages via Wrangler...
+echo [2/2] Publishing to Cloudflare via Wrangler...
 echo Note: If not logged in, Wrangler will open your browser to authorize.
 echo.
-call npx -y wrangler pages deploy frontend/dist --project-name lulc-mapping
+call npx -y wrangler deploy
 echo.
 echo =====================================================================
 echo  Deployment finished!

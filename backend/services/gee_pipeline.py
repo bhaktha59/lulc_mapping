@@ -4,23 +4,114 @@ Acquires satellite imagery for any uploaded study area in Tamil Nadu,
 handles cloud masking, compositing, 14-band feature extraction, and tile URL generation.
 """
 
+import os
+import json
+import base64
 import ee
 from config import PROJECT_ID, get_temporal_window, FEATURE_NAMES
 
 _gee_initialized = False
+_gee_init_error = None
+
+
+def is_gee_ready() -> bool:
+    """Returns True if Google Earth Engine is authenticated and initialized."""
+    global _gee_initialized
+    return bool(_gee_initialized)
+
+
+def get_gee_status() -> dict:
+    """Returns a diagnostic summary of the Earth Engine connection."""
+    global _gee_initialized, _gee_init_error
+    return {
+        "initialized": _gee_initialized,
+        "project": PROJECT_ID,
+        "error": _gee_init_error,
+    }
 
 
 def initialize_gee():
-    """Initializes Google Earth Engine with the authenticated project."""
-    global _gee_initialized
+    """
+    Initializes Google Earth Engine with the authenticated project.
+    Supports:
+    1. In-memory / Cloud Environment Variables: EARTHENGINE_TOKEN or EE_CREDENTIALS
+       (OAuth refresh token JSON or GCP Service Account JSON)
+    2. Google Cloud Application Default Credentials (ADC)
+    3. Persistent local credentials file (~/.config/earthengine/credentials)
+    """
+    global _gee_initialized, _gee_init_error
     if _gee_initialized:
         return True
+
+    # 1. Check for token passed via environment variable (ideal for cloud hosting like Render/Railway/Cloud Run)
+    raw_token = os.environ.get("EARTHENGINE_TOKEN") or os.environ.get("EE_CREDENTIALS") or os.environ.get("EARTHENGINE_CREDENTIALS")
+    if raw_token:
+        try:
+            token_str = raw_token.strip()
+            # Handle potential base64 encoding
+            if not token_str.startswith("{") and len(token_str) > 20:
+                try:
+                    token_str = base64.b64decode(token_str).decode("utf-8")
+                except Exception:
+                    pass
+
+            token_data = json.loads(token_str)
+            
+            # Check if this is a GCP service account JSON
+            if token_data.get("type") == "service_account":
+                from google.oauth2 import service_account
+                creds = service_account.Credentials.from_service_account_info(token_data)
+                ee.Initialize(credentials=creds, project=PROJECT_ID)
+                _gee_initialized = True
+                _gee_init_error = None
+                print(f"[GEE] Initialized using Service Account ({token_data.get('client_email')}) for project '{PROJECT_ID}'.")
+                return True
+
+            # Otherwise handle user OAuth2 refresh token credentials
+            refresh_token = token_data.get("refresh_token")
+            if refresh_token:
+                from ee.oauth import TOKEN_URI, CLIENT_ID, CLIENT_SECRET, SCOPES
+                from google.oauth2 import credentials as google_creds
+
+                creds = google_creds.Credentials(
+                    None,
+                    token_uri=TOKEN_URI,
+                    refresh_token=refresh_token,
+                    client_id=token_data.get("client_id", CLIENT_ID),
+                    client_secret=token_data.get("client_secret", CLIENT_SECRET),
+                    scopes=token_data.get("scopes", SCOPES),
+                    quota_project_id=PROJECT_ID,
+                )
+                ee.Initialize(credentials=creds, project=PROJECT_ID)
+                _gee_initialized = True
+                _gee_init_error = None
+                print(f"[GEE] Initialized successfully using EARTHENGINE_TOKEN for project '{PROJECT_ID}'.")
+
+                # Also write to persistent file path if possible to satisfy any downstream tools
+                try:
+                    cred_path = ee.oauth.get_credentials_path()
+                    os.makedirs(os.path.dirname(cred_path), exist_ok=True)
+                    if not os.path.exists(cred_path):
+                        with open(cred_path, "w", encoding="utf-8") as f:
+                            f.write(token_str)
+                except Exception:
+                    pass
+
+                return True
+        except Exception as e:
+            print(f"[GEE Warning] Failed to initialize from EARTHENGINE_TOKEN env var: {e}")
+            _gee_init_error = str(e)
+
+    # 2. Standard persistent credentials or Application Default Credentials fallback
     try:
         ee.Initialize(project=PROJECT_ID)
         _gee_initialized = True
+        _gee_init_error = None
+        print(f"[GEE] Initialized using persistent/ADC credentials for project '{PROJECT_ID}'.")
         return True
     except Exception as e:
-        print(f"Earth Engine initialization error: {e}")
+        _gee_init_error = str(e)
+        print(f"[GEE Error] Earth Engine initialization error: {e}")
         return False
 
 

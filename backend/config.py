@@ -8,14 +8,14 @@ import os
 # Base Directories
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PORTAL_DIR = os.path.dirname(BASE_DIR)
-DATA_DIR = os.path.join(PORTAL_DIR, "data")
+DATA_DIR = os.environ.get("DATA_DIR", os.path.join(PORTAL_DIR, "data"))
 PROJECTS_DIR = os.path.join(DATA_DIR, "projects")
 
 os.makedirs(DATA_DIR, exist_ok=True)
 os.makedirs(PROJECTS_DIR, exist_ok=True)
 
 # Google Earth Engine Configuration
-PROJECT_ID = "favorable-bolt-489809-c7"
+PROJECT_ID = os.environ.get("GEE_PROJECT_ID", os.environ.get("PROJECT_ID", "favorable-bolt-489809-c7"))
 
 # Standard Tamil Nadu LULC Classification Scheme (Configurable per study area)
 DEFAULT_LULC_CLASSES = {

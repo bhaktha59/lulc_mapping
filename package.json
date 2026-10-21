@@ -16,5 +16,8 @@
     "install:all": "npm install --prefix frontend",
     "deploy:cf": "cmd /c deploy_cloudflare.bat",
     "tunnel": "cmd /c start_tunnel.bat"
+  },
+  "devDependencies": {
+    "wrangler": "^4.151.3"
   }
 }
